@@ -1,21 +1,35 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import { text3 } from '../common/styles';
 type Props = {
   text: string;
   onPress: () => void;
+  loading: boolean;
 };
 
-export default function Button({ onPress, text }: Props) {
+export default function Button({ onPress, text, loading = false }: Props) {
   return (
-    <TouchableOpacity style={styles.textContainer} onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
+    <TouchableOpacity
+      disabled={loading}
+      style={[styles.container, { opacity: loading ? 0.5 : 1 }]}
+      onPress={onPress}
+    >
+      {loading === true ? (
+        <ActivityIndicator />
+      ) : (
+        <Text style={styles.text}>{text}</Text>
+      )}
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  textContainer: {
+  container: {
     backgroundColor: '#d3ffda',
     borderWidth: 1,
     borderColor: '#5eca00',

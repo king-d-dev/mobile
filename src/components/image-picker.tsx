@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Alert, View, Image, TextStyle } from 'react-native';
+import React, { useEffect } from 'react';
+import { Alert, TextStyle } from 'react-native';
 import * as ExpoImagePicker from 'expo-image-picker';
 import { ImageInfo } from 'expo-image-picker/build/ImagePicker.types';
-import Button from './button';
 import PressableText from './pressable-text';
 
 type Props = {
@@ -35,10 +34,8 @@ export default function ImagePicker({ setImage, text, style }: Props) {
       allowsEditing: true,
       quality: 1,
       aspect: [4, 3],
-      //   base64: true,
+      base64: true,
     });
-
-    console.log('RRR', result);
 
     if (!result.cancelled) {
       setImage(result);

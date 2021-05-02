@@ -1,20 +1,28 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/home';
-import Links from '../screens/links';
+import FramedImageScreen from '../screens/framed-image';
 
-type RootTabNavigator = {
+export type RootNavigator = {
   Home: undefined;
-  Links: undefined;
+  FramedImage: { image: string };
 };
 
-const BottomTab = createBottomTabNavigator<RootTabNavigator>();
+const Stack = createStackNavigator<RootNavigator>();
 
 export default function Navigation() {
   return (
-    <BottomTab.Navigator>
-      <BottomTab.Screen name="Links" component={Links} />
-      <BottomTab.Screen name="Home" component={HomeScreen} />
-    </BottomTab.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: 'Photo Framer' }}
+      />
+      <Stack.Screen
+        name="FramedImage"
+        component={FramedImageScreen}
+        options={{ title: '' }}
+      />
+    </Stack.Navigator>
   );
 }
