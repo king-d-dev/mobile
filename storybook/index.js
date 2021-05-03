@@ -15,6 +15,7 @@ addDecorator(withKnobs);
 
 // import stories
 configure(() => {
+  console.log('passing here');
   require('./stories');
 }, module);
 

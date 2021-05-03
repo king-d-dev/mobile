@@ -6,6 +6,7 @@ enableScreens();
 
 import Navigation from './src/navigation';
 import { useCachedResources } from './hooks/use-cached-resources';
+import StorybookUIRoot from './storybook';
 
 export default function App() {
   const loaded = useCachedResources();
